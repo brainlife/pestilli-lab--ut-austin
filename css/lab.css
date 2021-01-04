@@ -12,12 +12,14 @@ background: no-repeat center center fixed;
 }
 
 .carousel-indicators li {
-    width: 20px;
-    height: 20px;
+    width: 10px;
+    height: 10px;
     border-radius: 100%;
-    background-color: #F9C926 ;
+    background-color: #ffffff ;
 }
-
+.carousel-indicators .active{
+    background-color: #F9C926 !important;
+}
 body {
     font-family: "Open Sans", sans-serif;
   }
@@ -46,7 +48,7 @@ p{
     margin: inherit;
     width:auto;
     height: auto;
-    background-color: #FFAF8B;
+    background-color: #F57F5B;
   }
   .rect > h1 {
     margin-left: 20px;
@@ -68,6 +70,8 @@ Black           900
 }
 .active{
     background-color: #F9C926 !important;
+    color: #373737 !important;
+
 }
 .nav-item> a {
     font-weight: 600;
