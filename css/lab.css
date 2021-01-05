@@ -11,6 +11,13 @@ object-fit: cover;
 background: no-repeat center center fixed;
 }
 
+.semi-bold {
+    font-weight: 600 !important;
+    color: #646464 !important;
+}
+.linespace{
+    line-height: 1.4;
+}
 .carousel-indicators li {
     width: 10px;
     height: 10px;
@@ -22,10 +29,16 @@ background: no-repeat center center fixed;
 }
 body {
     font-family: "Open Sans", sans-serif;
-  }
+}
 
 p{
     color: #646464 !important;
+}
+.margin-5px {
+    margin-top: 10px;
+}
+.caption-team {
+    font-size: smaller;
 }
 .btn{
     background-color: #F8971F;
@@ -85,6 +98,13 @@ Black           900
 
 #content-category{
     margin-top: 50px;
+}
+.position-team {
+   color:  #373737 !important;
+   font-size: small;
+}
+.image-center-div {
+    display:table-cell; vertical-align:middle; text-align:center;
 }
 .carousel-item:after {
     content:"";
