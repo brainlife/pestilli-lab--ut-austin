@@ -34,8 +34,11 @@ body {
 p{
     color: #646464 !important;
 }
-.margin-5px {
-    margin-top: 10px;
+
+#homepage-section-1>.col-lg-4:hover {
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;}
+.margin-50px {
+    margin-top: 50px;
 }
 .caption-team {
     font-size: smaller;
@@ -85,6 +88,12 @@ Black           900
     background-color: #F9C926 !important;
     color: #373737 !important;
 
+}
+.nav-link.active:hover {
+  background-color: #FDE755 !important;
+}
+.nav-link:hover {
+  background-color: #FDE755 !important;
 }
 .nav-item> a {
     font-weight: 600;
