@@ -26,13 +26,15 @@ var HttpClient = function() {
 function team(){
    var myObj = [
     {
-        "name": "Franco Pestilli",
-        "id": "0000-0002-2469-0494"
-    },
-    {
-        "name": "Franco Pestilli",
-        "id": "0000-0002-2469-0491"
+        "image": "url_or_path",
+        "id": "0000-0002-2469-0494",
+        "summary":"A small description"
     }
+    // {
+    //     "image": "url_or_path",
+    //     "id": "0000-0002-2469-0494",
+    //     "summary":"A small description"
+    // }
     ]
 
     console.log(myObj);
@@ -45,10 +47,12 @@ function team(){
     client.get('https://pub.orcid.org/v3.0/'+obj.id, function(response) {
 
     // do something with response
-        console.log(response);
-
-
-}); 
+        // console.log(response);
+        var JsonResponse = JSON.parse(response);
+        var LastName = JSON.stringify(JsonResponse.person.name['family-name'].value);
+        var FirstName = JSON.stringify(JsonResponse.person.name['given-names'].value);
+        // console.log(FirstName+" "+LastName);
+    }); 
     }
 
     }
