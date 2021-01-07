@@ -18,9 +18,15 @@ function team(){
     },
     {
         "name": "Franco Pestilli",
-        "id": "0000-0002-2469-0494"
+        "id": "0000-0002-2469-0491"
     }
     ]
 
     console.log(myObj);
+    for(var i = 0; i < myObj.length; i++) {
+        var obj = myObj[i];
+    
+        console.log(obj.id);
+    }
+
     }
