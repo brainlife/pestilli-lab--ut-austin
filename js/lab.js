@@ -29,12 +29,12 @@ function team(){
         "image": "url_or_path",
         "id": "0000-0002-2469-0494",
         "summary":"A small description"
+    },
+    {
+        "image": "url_or_path",
+        "id": "0000-0003-3641-3491",
+        "summary":"A small description"
     }
-    // {
-    //     "image": "url_or_path",
-    //     "id": "0000-0002-2469-0494",
-    //     "summary":"A small description"
-    // }
     ]
 
     console.log(myObj);
@@ -44,7 +44,8 @@ function team(){
         console.log(obj.id);
 
         var client = new HttpClient();
-    client.get('https://pub.orcid.org/v3.0/'+obj.id, function(response) {
+        client.get('https://pub.orcid.org/v3.0/'+obj.id, function(response) {
+            
 
     // do something with response
         // console.log(response);
@@ -52,6 +53,14 @@ function team(){
         var LastName = JSON.stringify(JsonResponse.person.name['family-name'].value);
         var FirstName = JSON.stringify(JsonResponse.person.name['given-names'].value);
         // console.log(FirstName+" "+LastName);
+        // console.log(JsonResponse["activities-summary"]);
+        var role =JSON.stringify(JsonResponse["activities-summary"].employments["affiliation-group"][0].summaries[0]["employment-summary"]["role-title"]);
+        var location = JSON.stringify(JsonResponse["activities-summary"].employments["affiliation-group"][0].summaries[0]["employment-summary"].organization.name);
+
+        
+
+
+
     }); 
     }
 
