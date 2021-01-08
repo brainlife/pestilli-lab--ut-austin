@@ -13,8 +13,8 @@ var HttpClient = function() {
     this.get = function(aUrl ,aCallback) {
         var anHttpRequest = new XMLHttpRequest();
         anHttpRequest.onreadystatechange = function() { 
-            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                aCallback(anHttpRequest.responseText);
+            if (this.readyState == 4 && this.status == 200)
+                aCallback(this.responseText);
         }
 
         anHttpRequest.open( "GET", aUrl, true );    
@@ -44,33 +44,35 @@ function team(){
         console.log(obj.id);
         var passed_img = obj.image
         var client = new HttpClient();
-        client.get('https://pub.orcid.org/v3.0/'+obj.id, function(response) {
-            
+        var name = "";
+        var description = obj.summary;
+        var role = "";
+        var location = "";
+        var content=""
+        var ab = client.get('https://pub.orcid.org/v3.0/'+obj.id, function(response) {
 
         // do something with response
             // console.log(response);
             var JsonResponse = JSON.parse(response);
             var LastName = JSON.stringify(JsonResponse.person.name['family-name'].value);
             var FirstName = JSON.stringify(JsonResponse.person.name['given-names'].value);
-            var image_address = passed_img;
-            console.log(image_address);
+            // var image_address = passed_img;
+            // console.log(image_address);
             LastName = LastName.replace(/\"/g, "");
             FirstName = FirstName.replace(/\"/g, "");
-            // console.log(FirstName+" "+LastName);
+            name = FirstName + " "+LastName;
+            console.log(name);
             // console.log(JsonResponse["activities-summary"]);
-            var role =JSON.stringify(JsonResponse["activities-summary"].employments["affiliation-group"][0].summaries[0]["employment-summary"]["role-title"]);
+            role =JSON.stringify(JsonResponse["activities-summary"].employments["affiliation-group"][0].summaries[0]["employment-summary"]["role-title"]);
             role = role.replace(/\"/g, "");
-            var location = JSON.stringify(JsonResponse["activities-summary"].employments["affiliation-group"][0].summaries[0]["employment-summary"].organization.name);
+            console.log(role);
+            location = JSON.stringify(JsonResponse["activities-summary"].employments["affiliation-group"][0].summaries[0]["employment-summary"].organization.name);
             location = location.replace(/\"/g, "");
-            if(image_address == null){
-                image_address == obj.image;
-            }
-            var content = '<div class="col-lg-3 col-md-6 col-12 mt-4 pt-2"><div class="text-center"><img src='+""+image_address+' class="rounded-circle" alt="Generic placeholder image" width="140" height="140"><div class="margin-5px"></div><h5 class="font-bold">'+FirstName+' '+LastName+'</h5><p class="position-team">'+role+' at '+location+'</p><p class="text-center caption-team">Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Etiam porta sem malesuada magna mollis euismod.</p></div></div>'
-            document.getElementById('teampage-section-1').innerHTML += content;
-            passed_img = null;
-
-
-    }); 
+            return response;
+    });
+    console.log("value of ab"+ab);
+    content = '<div class="col-lg-3 col-md-6 col-12 mt-4 pt-2"><div class="text-center"><img src='+""+passed_img+' class="rounded-circle" alt="Generic placeholder image" width="140" height="140"><div class="margin-5px"></div><h5 class="font-bold">'+name+'</h5><p class="position-team">'+role+' at '+location+'</p><p class="text-center caption-team">Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Etiam porta sem malesuada magna mollis euismod.</p></div></div>'
+    document.getElementById('teampage-section-1').innerHTML += content; 
     }
 
     }
