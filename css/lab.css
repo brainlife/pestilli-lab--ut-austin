@@ -43,6 +43,7 @@ p{
 .caption-team {
     font-size: smaller;
 }
+
 .btn{
     background-color: #F8971F;
     border-color: #F8971F;
@@ -61,14 +62,20 @@ p{
     
 }
 .rect {
-    margin: inherit;
-    width:auto;
-    height: auto;
-    background-color: #F57F5B;
+  height: auto;
+  width: auto;
+  color: white;
+  display: flex;
+  border-radius: 2px;
+  justify-content: center;
+  align-items: center;
+  background-color: #F57F5B;
   }
   .rect > h1 {
     margin-left: 20px;
     margin-right: 20px;
+    padding-top: auto;
+    padding-bottom: auto;
   }
 /* 
   Thin            100     
