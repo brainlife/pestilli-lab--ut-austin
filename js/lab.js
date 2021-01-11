@@ -40,15 +40,25 @@ function get_data_from_url(url) {
 }
 var CurrentTeam = [
     {
+        "ORCID":"true",
         "image": "https://brainlife.io/images/avatar/franco.jpg",
         "id": "0000-0002-2469-0494",
         "summary": "A small description"
 
     },
     {
+        "ORCID" : "true",
         "image": "https://brainlife.io/images/avatar/soichi.jpg",
         "id": "0000-0003-3641-3491",
         "summary": "A small descggggggggggription"
+    },
+    {
+        "ORCID":"false",
+        "image" : "",
+        "name": "",
+        "summary" : "",
+        "role" : "",
+        "location":"",
     }
 ]
 
