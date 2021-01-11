@@ -40,25 +40,25 @@ function get_data_from_url(url) {
 }
 var CurrentTeam = [
     {
-        "ORCID":"true",
+        "ORCID":true,
         "image": "https://brainlife.io/images/avatar/franco.jpg",
         "id": "0000-0002-2469-0494",
         "summary": "A small description"
 
     },
     {
-        "ORCID" : "true",
+        "ORCID" : true,
         "image": "https://brainlife.io/images/avatar/soichi.jpg",
         "id": "0000-0003-3641-3491",
         "summary": "A small descggggggggggription"
     },
     {
-        "ORCID":"false",
-        "image" : "",
-        "name": "",
-        "summary" : "",
-        "role" : "",
-        "location":"",
+        "ORCID":false,
+        "image" : "https://avatars2.githubusercontent.com/u/16397223?s=460&u=7f5cd78ae3a0046f1f10988bf0a0ddcf3b81953d&v=4",
+        "name": "Dheeraj Bhatia",
+        "summary" : "summer intern",
+        "role" : "intern",
+        "location":"Buffalo,NY",
     }
 ]
 
@@ -66,17 +66,28 @@ var AlumniTeam = [
     
     {
         /* bradley*/
+        "ORCID" : true,
         "image" : "https://brainlife.io/images/avatar/brad.jpg",
         "id":"0000-0002-4486-1203",
     },
     {
+        "ORCID" : true,
         /* Sophia */
         "image" : "https://brainlife.io/images/avatar/sophia_cropped_750x750.jpg",
         "id" : "0000-0002-3626-146X",
-    },{
+    },
+    {
         /* Sandra*/
+        "ORCID":true,
         "image" :"https://brainlife.io/images/avatar/sandra.jpg",
         id : "0000-0002-3677-1611",
+    },
+    {
+        "ORCID" : false, 
+        "image" : "https://brainlife.io/images/avatar/giulia3.png",
+        "name" : "Giulia Bertò",
+        "position":"Data and Application Engineer",
+        "location":"BrainLife", 
     }
 ]
 
@@ -84,6 +95,13 @@ function generateCurrentTeamDIV(name, id, role, location) {
     var picture;
     var description;
     for (var i = 0; i < CurrentTeam.length; i++) {
+        if(id == null){
+            var obj = CurrentTeam[i];
+            if (name == obj.name) {
+                picture = obj.image;
+                description = obj.summary;
+            }
+        }else{
         var obj = CurrentTeam[i];
         console.log(obj.id);
         console.log(id);
@@ -93,6 +111,7 @@ function generateCurrentTeamDIV(name, id, role, location) {
             description = obj.summary;
         }
     }
+    }
     content = '<div class="col-lg-3 col-md-6 col-12 mt-4 pt-2"><div class="text-center"><img src=' + "" + picture + ' class="rounded-circle" alt="Generic placeholder image" width="140" height="140"><div class="margin-5px"></div><h5 class="font-bold">' + name + '</h5><p class="position-team">' + role + ' at ' + location + '</p><p class="text-center caption-team">'+description+'</p></div></div>';
     document.getElementById('teampage-section-1').innerHTML += content;
 }
@@ -100,6 +119,14 @@ function generateCurrentTeamDIV(name, id, role, location) {
 function generateAlumniTeamDIV(name, id, role, location) {
     var picture;
     for (var i = 0; i < AlumniTeam.length; i++) {
+        if(id == null){
+            var obj = AlumniTeam[i];
+            if (name == obj.name) {
+                picture = obj.image;
+                role = obj.position;
+                location = obj.location;
+            }
+        }else{
         var obj = AlumniTeam[i];
         console.log(obj.id);
         console.log(id);
@@ -107,6 +134,7 @@ function generateAlumniTeamDIV(name, id, role, location) {
         if (id == obj.id) {
             picture = obj.image;
         }
+    }
     }
     content = '<div class="col-lg-3 col-md-6 col-12 mt-4 pt-2"><div class="text-center"><img src=' + "" + picture + ' class="rounded-circle" alt="Generic placeholder image" width="140" height="140"><div class="margin-5px"></div><h5 class="font-bold">' + name + '</h5><p class="position-team">' + role + ' at ' + location + '</p></div></div>'
     document.getElementById('teampage-section-alumni').innerHTML += content;
@@ -117,8 +145,10 @@ function team() {
     // CREATES Current Team
     console.log(CurrentTeam);
     for (var i = 0; i < CurrentTeam.length; i++) {
+        
         var obj = CurrentTeam[i];
         console.log(obj.id);
+        if(obj.ORCID == true){
         var passed_img = obj.image
         var client = new HttpClient();
         var name = "";
@@ -157,6 +187,9 @@ function team() {
                 console.log(response.status); // ex.: 200
                 generateCurrentTeamDIV(name, id, role, location);
             });
+        }else{
+             generateCurrentTeamDIV(obj.name, null, obj.role, obj.location);
+        }
         
         console.log("value of ab" + JsonResponse);
         // content = '<div class="col-lg-3 col-md-6 col-12 mt-4 pt-2"><div class="text-center"><img src='+""+passed_img+' class="rounded-circle" alt="Generic placeholder image" width="140" height="140"><div class="margin-5px"></div><h5 class="font-bold">'+name+'</h5><p class="position-team">'+role+' at '+location+'</p><p class="text-center caption-team">Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Etiam porta sem malesuada magna mollis euismod.</p></div></div>'
@@ -165,7 +198,9 @@ function team() {
 
     // Creates Alumni Team 
     for (var i = 0; i < AlumniTeam.length; i++) {
+        
         var obj = AlumniTeam[i];
+        if(obj.ORCID == true){
         console.log(obj.id);
         var passed_img = obj.image
         var name = "";
@@ -207,5 +242,8 @@ function team() {
         console.log("value of ab" + JsonResponse);
         // content = '<div class="col-lg-3 col-md-6 col-12 mt-4 pt-2"><div class="text-center"><img src='+""+passed_img+' class="rounded-circle" alt="Generic placeholder image" width="140" height="140"><div class="margin-5px"></div><h5 class="font-bold">'+name+'</h5><p class="position-team">'+role+' at '+location+'</p><p class="text-center caption-team">Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Etiam porta sem malesuada magna mollis euismod.</p></div></div>'
         // document.getElementById('teampage-section-1').innerHTML += content; 
+    }else{
+        generateAlumniTeamDIV(obj.name, null, obj.role, obj.location);
     }
+}
 }
