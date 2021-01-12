@@ -248,11 +248,89 @@ function team() {
 }
 }
 
-let parser = new RSSParser();
-parser.parseURL('https://pubmed.ncbi.nlm.nih.gov/rss/search/1-E-T-Pur1FBkVKbU8LjWt1-9Q259xhHJ9EYoUamU1xlaplMjx/?limit=100&utm_campaign=pubmed-2&fc=20210112114804', function(err, feed) {
-  if (err) throw err;
-  for (let i = 0; i < 3; i++) {
-    const entry = feed.items[i];
-    console.log(entry);
-}
-});
+
+// const CORS_PROXY = "https://test.cors.workers.dev/"
+// let parser = new RSSParser();
+// parser.parseURL(CORS_PROXY+'https://pubmed.ncbi.nlm.nih.gov/rss/search/1-E-T-Pur1FBkVKbU8LjWt1-9Q259xhHJ9EYoUamU1xlaplMjx/?limit=100&utm_campaign=pubmed-2&fc=20210112114804', function(err, feed) {
+//   if (err) throw err;
+//   feed.items.forEach(function(entry) {
+//     console.log(entry);
+//   });
+// });
+
+const CORS_PROXY = "https://cors-anywhere.herokuapp.com/"
+
+// let parser = new RSSParser();
+// parser.parseURL(CORS_PROXY + 'https://pubmed.ncbi.nlm.nih.gov/rss/search/1-E-T-Pur1FBkVKbU8LjWt1-9Q259xhHJ9EYoUamU1xlaplMjx/?limit=100&utm_campaign=pubmed-2&fc=20210112114804', function(err, feed) {
+//   if (err) throw err;
+//   console.log(feed.title);
+//   feed.items.forEach(function(entry) {
+//     console.log(entry.title + ':' + entry.link);
+//     console.log(entry.pubDate);
+//     console.log(entry["dc:creator"]);
+//   })
+// })
+var options = {
+    attributeNamePrefix : "@_",
+    attrNodeName: "attr", //default is 'false'
+    textNodeName : "#text",
+    ignoreAttributes : true,
+    ignoreNameSpace : false,
+    allowBooleanAttributes : false,
+    parseNodeValue : true,
+    parseAttributeValue : false,
+    trimValues: true,
+    cdataTagName: "__cdata", //default is 'false'
+    cdataPositionChar: "\\c",
+    parseTrueNumberOnly: false,
+    arrayMode: false, //"strict"
+    attrValueProcessor: (val, attrName) => he.decode(val, {isAttributeValue: true}),//default is a=>a
+    tagValueProcessor : (val, tagName) => he.decode(val), //default is a=>a
+    stopNodes: ["parse-me-as-string"]
+};
+// try{
+// var jsonObj = parser.parse(CORS_PROXY+'https://pubmed.ncbi.nlm.nih.gov/rss/search/1-E-T-Pur1FBkVKbU8LjWt1-9Q259xhHJ9EYoUamU1xlaplMjx/?limit=100&utm_campaign=pubmed-2&fc=20210112114804',[options]);
+// }catch(error){
+//     console.log(error.message);
+//   }
+
+// var result = parser.validate(jsonObj);
+// if (result !== true) console.log(result.err);
+// var jsonObj = parser.parse(xmlData);
+
+var dataUrl = CORS_PROXY+'https://pubmed.ncbi.nlm.nih.gov/rss/search/1-E-T-Pur1FBkVKbU8LjWt1-9Q259xhHJ9EYoUamU1xlaplMjx/?limit=100&utm_campaign=pubmed-2&fc=20210112114804';
+
+// jQuery.ajax({
+//     type :"GET",
+//     url : dataUrl,
+//     success : function(dataXML){
+//         //dataXML will have the complete xml..
+//         var dataXML_OUTPUT = "<?xml version='1.0' encoding='UTF-8'?>"+dataXML;
+//         console.log(dataXML);
+//         try{
+//             var jsonObj = parser.parse(dataXML_OUTPUT,options, true);
+//             var tObj = parser.getTraversalObj(dataXML_OUTPUT,options);
+//             var jsonObj = parser.convertToJson(tObj,options);
+
+//             var jsonObj2 = parser.parse(dataXML_OUTPUT);
+//             console.log(jsonObj2);
+//           }catch(error){
+//             console.log(error.message);
+//           }
+
+//           var jsonObj2 = parser.parse(dataXML_OUTPUT);
+//           console.log(jsonObj2);
+
+//     },
+//     error : function(){
+//         //error handler..
+//     }
+// });
+
+axios.get(dataUrl, { data: null }, axios.defaults.headers)
+            .then(response => {
+                console.log(response.data)
+                var jsonObj2 = parser.parse(response.data);
+          console.log(jsonObj2);
+              });
+            
