@@ -142,13 +142,19 @@ Bold            700
 Extra-Bold      800
 Black           900
 */
+.bold{
+  font-weight: 700;
+}
+.semi-bold{
+  font-weight: 600;
+}
+
 .orange-text{
     color: #F8971F;
 }
 .active{
     background-color: #F9C926 !important;
     color: #373737 !important;
-
 }
 .nav-link.active:hover {
   background-color: #FDE755 !important;

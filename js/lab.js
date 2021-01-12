@@ -247,3 +247,12 @@ function team() {
     }
 }
 }
+
+let parser = new RSSParser();
+parser.parseURL('https://pubmed.ncbi.nlm.nih.gov/rss/search/1-E-T-Pur1FBkVKbU8LjWt1-9Q259xhHJ9EYoUamU1xlaplMjx/?limit=100&utm_campaign=pubmed-2&fc=20210112114804', function(err, feed) {
+  if (err) throw err;
+  for (let i = 0; i < 3; i++) {
+    const entry = feed.items[i];
+    console.log(entry);
+}
+});
