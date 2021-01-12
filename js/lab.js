@@ -327,10 +327,23 @@ var dataUrl = CORS_PROXY+'https://pubmed.ncbi.nlm.nih.gov/rss/search/1-E-T-Pur1F
 //     }
 // });
 
+function generatePublication(title,date,authors,link) {
+    content = '<li class="timeline-item bg-white rounded ml-3 p-4 shadow"> <div class="timeline-arrow"></div><p><span class="orange-text">'+date+'</span></p><h2 class="h5">'+title+'</h2><p>'+authors+'</p></li>'
+    document.getElementById('_publications').innerHTML += content;
+}
 axios.get(dataUrl, { data: null }, axios.defaults.headers)
             .then(response => {
                 console.log(response.data)
                 var jsonObj2 = parser.parse(response.data);
-          console.log(jsonObj2);
+                console.log(jsonObj2);
+                console.log(jsonObj2.rss.channel.item.length);
+                for(i=0; i <= jsonObj2.rss.channel.item.length;i++){
+                    var output = jsonObj2.rss.channel.item[i];
+                    var title = output.title;
+                    var date = output["dc:date"];
+                    var authors = output["dc:creator"];
+                    var link = output["link"];
+                    generatePublication(title, date,authors,link);
+                }
               });
             
