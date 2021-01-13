@@ -143,14 +143,17 @@ Extra-Bold      800
 Black           900
 */
 .bold{
-  font-weight: 700;
+  font-weight: 700 !important;
 }
 .semi-bold{
   font-weight: 600;
 }
 
+.journal {
+  color : #A9262C !important;
+}
 .orange-text{
-    color: #F8971F;
+    color: #F8971F !important;
 }
 .active{
     background-color: #F9C926 !important;

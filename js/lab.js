@@ -327,9 +327,9 @@ var dataUrl = CORS_PROXY+'https://pubmed.ncbi.nlm.nih.gov/rss/search/1-E-T-Pur1F
 //     }
 // });
 
-function generatePublication(title,date,authors,link,doi) {
+function generatePublication(title,date,authors,link,doi,journal) {
     var doi_num = doi [doi.length - 1];
-    content = '<li class="timeline-item bg-white rounded ml-3 p-4 shadow"> <div class="timeline-arrow"></div><p><span class="orange-text">'+date+'</span><span><a href='+link+'> <span class="badge badge-pill badge-info"> '+doi_num+'</span></a></p><h2 class="h5">'+title+'</h2><p>'+authors+'</p></li>'
+    content = '<li class="timeline-item bg-white rounded ml-3 p-4 shadow"> <div class="timeline-arrow"></div><p><span class="orange-text">'+date+'</span></p><h2 class="h5">'+title+'</h2><p>'+authors+'</p> <p class="journal bold">'+journal+'<br><span><a href='+link+'><span class="badge badge-pill badge-info">'+doi_num+'</a></span></p></li>'
     console.log("ddd"+doi_num);
     document.getElementById('_publications').innerHTML += content;
 }
@@ -346,7 +346,8 @@ axios.get(dataUrl, { data: null }, axios.defaults.headers)
                     var authors = output["dc:creator"];
                     var link = output["link"];
                     var doi = output["dc:identifier"]
-                    generatePublication(title, date,authors,link,doi);
+                    var journal = output["dc:source"]
+                    generatePublication(title, date,authors,link,doi,journal);
                 }
               });
             
