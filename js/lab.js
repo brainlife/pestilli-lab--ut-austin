@@ -344,6 +344,7 @@ axios.get(dataUrl, { data: null }, axios.defaults.headers)
                     var title = output.title;
                     var date = output["dc:date"];
                     var authors = output["dc:creator"];
+                    // authors.split
                     var link = output["link"];
                     var doi = output["dc:identifier"]
                     var journal = output["dc:source"]

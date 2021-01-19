@@ -36,7 +36,11 @@ p{
 }
 
 #homepage-section-1>.col-lg-4:hover {
-  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;}
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+  }
+  #homepage-section-1>.col-lg-4>img:hover {
+  animation: draw 3s linear forwards !important;
+  }
 .margin-50px {
     margin-top: 50px;
 }
@@ -145,6 +149,7 @@ Black           900
 .bold{
   font-weight: 700 !important;
 }
+
 .semi-bold{
   font-weight: 600;
 }
