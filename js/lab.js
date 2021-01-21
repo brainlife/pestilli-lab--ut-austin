@@ -370,6 +370,21 @@ axios.get(CORS_PROXY+'https://api.nsf.gov/services/v1/awards.json?keyword="franc
         generateAwards(output.startDate,output.expDate,output.piFirstName+' '+output.piLastName,"",output.title);
 
     }
-    console.log();
+    }
+});
+
+
+axios.get(CORS_PROXY+'https://api.federalreporter.nih.gov/v1/Projects/search?query=piName%3AFRANCO%20PESTILLI&offset=1&limit=100').then(response =>{
+    console.log(response);
+    // console.log(response.data.response.award);
+    var outputs = response.data.items;
+    for(i=0; i <= outputs.length;i++){
+        var output = response.data.items[i];
+        if(output.otherPis != undefined){
+            generateAwards(output.projectStartDate,output.projectEndDate,output.contactPi,output.otherPis,output.title);
+    }else{
+        generateAwards(output.projectStartDate,output.projectEndDate,output.contactPi,"",output.title);
+
+    }
     }
 });
