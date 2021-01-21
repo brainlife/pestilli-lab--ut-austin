@@ -333,6 +333,7 @@ function generatePublication(title,date,authors,link,doi,journal) {
     console.log("ddd"+doi_num);
     document.getElementById('_publications').innerHTML += content;
 }
+
 axios.get(dataUrl, { data: null }, axios.defaults.headers)
             .then(response => {
                 console.log(response.data)
@@ -351,4 +352,24 @@ axios.get(dataUrl, { data: null }, axios.defaults.headers)
                     generatePublication(title, date,authors,link,doi,journal);
                 }
               });
-            
+
+function generateAwards(startDate,endDate,pi,copi,title){
+    content = '<li class="timeline-item bg-white rounded ml-3 p-4 shadow"> <div class="timeline-arrow"></div><p><span class="orange-text">'+startDate +' to '+ endDate+'</span></p><h2 class="h5">'+title+'</h2><p>'+pi+','+copi+'</p> <p class="journal bold"><br><span><a href='+title+'><span class="badge badge-pill badge-info">'+'</a></span></p></li>';
+    document.getElementById('_awards').innerHTML += content;
+}
+
+axios.get(CORS_PROXY+'https://api.nsf.gov/services/v1/awards.json?keyword="franco+pestilli"&printFields=startDate,expDate,id,title,awardee,agency,awardeeName,piFirstName,piLastName,coPDPI').then(response =>{
+    // console.log(response.data);
+    console.log(response.data.response.award);
+    var outputs = response.data.response.award;
+    for(i=0; i <= outputs.length;i++){
+        var output = response.data.response.award[i];
+        if(output.coPDPI != undefined){
+            generateAwards(output.startDate,output.expDate,output.piFirstName+' '+output.piLastName,output.coPDPI,output.title);
+    }else{
+        generateAwards(output.startDate,output.expDate,output.piFirstName+' '+output.piLastName,"",output.title);
+
+    }
+    console.log();
+    }
+});
