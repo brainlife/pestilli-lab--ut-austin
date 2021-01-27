@@ -354,7 +354,7 @@ axios.get(dataUrl, { data: null }, axios.defaults.headers)
               });
 
 function generateAwards(startDate,endDate,pi,copi,title){
-    content = '<li class="timeline-item bg-white rounded ml-3 p-4 shadow"> <div class="timeline-arrow"></div><p><span class="orange-text">'+startDate +' to '+ endDate+'</span></p><h2 class="h5">'+title+'</h2><p>'+pi+','+copi+'</p> <p class="journal bold"><br><span><a href='+title+'><span class="badge badge-pill badge-info">'+'</a></span></p></li>';
+    content = '<li class="timeline-item bg-white rounded ml-3 p-4 shadow"> <div class="timeline-arrow"></div><p><span class="orange-text">'+startDate +' to '+ endDate+'</span></p><h2 class="h5">'+title+'</h2><p>'+pi+' ,'+copi+'</p> <p class="journal bold"><br><span><a href='+title+'><span class="badge badge-pill badge-info">'+'</a></span></p></li>';
     document.getElementById('_awards').innerHTML += content;
 }
 
@@ -381,6 +381,7 @@ axios.get(CORS_PROXY+'https://api.federalreporter.nih.gov/v1/Projects/search?que
     for(i=0; i <= outputs.length;i++){
         var output = response.data.items[i];
         if(output.otherPis != undefined){
+            
             generateAwards(output.projectStartDate,output.projectEndDate,output.contactPi,output.otherPis,output.title);
     }else{
         generateAwards(output.projectStartDate,output.projectEndDate,output.contactPi,"",output.title);

@@ -1,0 +1,21 @@
+{
+   "Soichi Hayashi" : {
+        "type" : "current",
+        "ORCID":true,
+        "image": "https://brainlife.io/images/avatar/franco.jpg",
+        "id": "0000-0002-2469-0494",
+        "summary": "A small description"
+    },
+    "Bradley":{
+        "type" : "alumni",
+        "ORCID" : true,
+        "image" : "https://brainlife.io/images/avatar/brad.jpg",
+        "id":"0000-0002-4486-1203"
+    },
+    "Giulia Bertò":{
+        "ORCID" : false, 
+        "image" : "https://brainlife.io/images/avatar/giulia3.png",
+        "position":"Data and Application Engineer",
+        "location":"BrainLife"
+    }
+}
