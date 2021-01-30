@@ -13,10 +13,10 @@
         "id":"0000-0002-4486-1203"
     },
     "Giulia Bertò":{
-        "type" : "current",
+        "type" : "alumni",
         "ORCID" : false, 
         "image" : "https://brainlife.io/images/avatar/giulia3.png",
-        "position":"Data and Application Engineer",
+        "role":"Data and Application Engineer",
         "location":"BrainLife",
         "externals":{
             "resume" : "location://resume",

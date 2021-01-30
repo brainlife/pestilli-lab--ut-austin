@@ -248,11 +248,35 @@ function team() {
 }
 }
 
+function generateAlumni(obj){
+    if(obj.ORCID ==true){
+        console.log("it is true");
+        console.log(obj)
+    }else{
+        console.log("it is false");
+    }
+}
+
+
+
+
 function team_generator(){
 
     fetch('assets/team.json').then(res=>res.json()).then(insts=>{
         
         console.log(insts);
+        console.log(insts.length);
+        for(let name in insts) {
+            var obj = insts[name];
+            var type = obj.type;
+            if(type == 'alumni'){
+                generateAlumni(obj);
+            }else if (type == 'current'){
+
+            }else{
+
+            }
+        }
 });
 
 }
