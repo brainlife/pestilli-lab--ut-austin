@@ -248,6 +248,18 @@ function team() {
 }
 }
 
+function team_generator(){
+
+    fetch('assets/team.json').then(res=>res.json()).then(insts=>{
+        
+        console.log(insts);
+});
+
+}
+
+
+
+
 
 // const CORS_PROXY = "https://test.cors.workers.dev/"
 // let parser = new RSSParser();
