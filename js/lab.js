@@ -249,21 +249,17 @@ function team() {
 }
 
 function generateAlumni(obj){
+    console.log("entered generateAlumni");
+
     if(obj.ORCID ==true){
-        console.log("it is true");
+        console.log("it has orcid");
         console.log(obj)
+        var assets_json = obj;
         var data_url = 'https://pub.orcid.org/v3.0/' + obj.id;
         axios.get(data_url, { data: null }, axios.defaults.headers)
-        .then(function (response, obj) {
-            console.log(obj);
+        .then(function (response, obj,) {
+            console.log("checking obj \n"+obj);
             JsonResponse = response.data;
-            var LastName = JSON.stringify(JsonResponse.person.name['family-name'].value);
-            var FirstName = JSON.stringify(JsonResponse.person.name['given-names'].value);
-            var id = JSON.stringify(JsonResponse["orcid-identifier"].path);
-            LastName = LastName.replace(/\"/g, "");
-            FirstName = FirstName.replace(/\"/g, "");
-            name = FirstName + " " + LastName;
-            console.log(name);
             role = JSON.stringify(JsonResponse["activities-summary"].employments["affiliation-group"][0].summaries[0]["employment-summary"]["role-title"]);
             role = role.replace(/\"/g, "");
             console.log(role);
@@ -271,9 +267,9 @@ function generateAlumni(obj){
             location = location.replace(/\"/g, "");
             console.log(JsonResponse = response.data); // ex.: { user: 'Your User'}
             console.log(response.status); // ex.: 200
-        });
+                });
     }else{
-        console.log("it is false");
+        console.log("it doesn't has orcid");
     }
 }
 
@@ -281,11 +277,11 @@ function generateAlumni(obj){
 
 
 function team_generator(){
+    console.log("entered");
 
     fetch('assets/team.json').then(res=>res.json()).then(insts=>{
         
         console.log(insts);
-        console.log(insts.length);
         for(let name in insts) {
             var obj = insts[name];
             var type = obj.type;

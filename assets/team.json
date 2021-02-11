@@ -1,15 +1,16 @@
 {
-   "Soichi Hayashi" : {
+   "Franco Pestilli" : {
         "type" : "current",
-        "ORCID":true,
+        "ORCID":"true",
         "image": "https://brainlife.io/images/avatar/franco.jpg",
         "id": "0000-0002-2469-0494",
         "summary": "A small description",
         "externals" : {
-            "twitter" : "",
-            "facebook" : "",
-            "linkdin" : "",
-            "resume" : ""       
+            "twitter" : "rrr",
+            "facebook" : "htttp",
+            "linkedin" : "rrr",
+            "resume" : "rr" ,
+            "github" : "ddd"      
          }
     },
     "Giulia Bertò":{
