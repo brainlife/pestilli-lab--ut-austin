@@ -68,6 +68,9 @@ p{
     top: 50%;
     
 }
+.icons{
+  color : rgb(169, 38, 44);
+}
 .rect {
   height: auto;
   width: auto;
@@ -189,6 +192,7 @@ Black           900
 .position-team {
    color:  #373737 !important;
    font-size: small;
+   margin-bottom: 5px;
 }
 .image-center-div {
     display:table-cell; vertical-align:middle; text-align:center;

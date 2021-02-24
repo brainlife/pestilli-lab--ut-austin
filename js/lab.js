@@ -410,7 +410,7 @@ function generateAwards(startDate,endDate,pi,copi,title){
     document.getElementById('_awards').innerHTML += content;
 }
 
-axios.get(CORS_PROXY+'https://api.nsf.gov/services/v1/awards.json?keyword="franco+pestilli"&printFields=startDate,expDate,id,title,awardee,agency,awardeeName,piFirstName,piLastName,coPDPI').then(response =>{
+axios.get('assets/nsf.json').then(response =>{
     // console.log(response.data);
     console.log(response.data.response.award);
     var outputs = response.data.response.award;

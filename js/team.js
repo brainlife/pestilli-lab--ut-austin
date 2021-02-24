@@ -18,16 +18,20 @@ function generateCurrentTeamDIV(name, role, location, image,externals) {
     for(x in externals){
         if(x == 'facebook'){
             console.log(externals[x]);
-            icons += '<a href ="'+externals[x]+'"><i class="orange-text fab fa-facebook-square fa-2x"></i></a>&nbsp'
+            icons += '<a href ="'+externals[x]+'"><i class="icons fab fa-facebook-square fa-lg"></i></a>&nbsp'
         }
-        if(x == 'linkedin'){
+        if(x == 'twitter'){
             console.log(externals[x]);
-            icons += '<a href ="'+externals[x]+'"><i class="orange-text fab fa-linkedin fa-2x"></i></a>&nbsp'
+            icons += '<a href ="'+externals[x]+'"><i class="icons fab fa-twitter-square fa-lg"></i></a>&nbsp'
         }
 
         if(x == 'github'){
             console.log(externals[x]);
-            icons += '<a href ="'+externals[x]+'"><i class="orange-text fab fa-github-square fa-2x"></i></a>&nbsp'
+            icons += '<a href ="'+externals[x]+'"><i class="icons fab fa-github-square fa-lg"></i></a>&nbsp'
+        }
+        if(x == 'scholar'){
+            console.log(externals[x]);
+            icons += '<a href ="'+externals[x]+'"><i class="icons fa fa-graduation-cap fa-lg"></i></a>&nbsp'
         }
         // if(x == 'resume'){
         //     console.log(externals[x]);
