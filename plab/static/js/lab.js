@@ -410,20 +410,20 @@ function generateAwards(startDate,endDate,pi,copi,title){
     document.getElementById('_awards').innerHTML += content;
 }
 
-axios.get('assets/nsf.json').then(response =>{
-    // console.log(response.data);
-    console.log(response.data.response.award);
-    var outputs = response.data.response.award;
-    for(i=0; i <= outputs.length;i++){
-        var output = response.data.response.award[i];
-        if(output.coPDPI != undefined){
-            generateAwards(output.startDate,output.expDate,output.piFirstName+' '+output.piLastName,output.coPDPI,output.title);
-    }else{
-        generateAwards(output.startDate,output.expDate,output.piFirstName+' '+output.piLastName,"",output.title);
+// axios.get('assets/nsf.json').then(response =>{
+//     // console.log(response.data);
+//     console.log(response.data.response.award);
+//     var outputs = response.data.response.award;
+//     for(i=0; i <= outputs.length;i++){
+//         var output = response.data.response.award[i];
+//         if(output.coPDPI != undefined){
+//             generateAwards(output.startDate,output.expDate,output.piFirstName+' '+output.piLastName,output.coPDPI,output.title);
+//     }else{
+//         generateAwards(output.startDate,output.expDate,output.piFirstName+' '+output.piLastName,"",output.title);
 
-    }
-    }
-});
+//     }
+//     }
+// });
 
 
 axios.get(CORS_PROXY+'https://api.federalreporter.nih.gov/v1/Projects/search?query=piName%3AFRANCO%20PESTILLI&offset=1&limit=100').then(response =>{
