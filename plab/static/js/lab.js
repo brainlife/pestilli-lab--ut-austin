@@ -279,7 +279,7 @@ function generateAlumni(obj){
 function team_generator(){
     console.log("entered");
 
-    fetch('assets/team.json').then(res=>res.json()).then(insts=>{
+    fetch('http://129.114.17.179:8000/plab/assets/team.json').then(res=>res.json()).then(insts=>{
         
         console.log(insts);
         for(let name in insts) {
@@ -386,7 +386,7 @@ function generatePublication(title,date,authors,link,doi,journal) {
     document.getElementById('_publications').innerHTML += content;
 }
 
-axios.get('/assets/pub.xml', { data: null }, axios.defaults.headers)
+axios.get('http://129.114.17.179:8000/plab/assets/pub.xml', { data: null }, axios.defaults.headers)
             .then(response => {
                 console.log(response.data)
                 var jsonObj2 = parser.parse(response.data);
