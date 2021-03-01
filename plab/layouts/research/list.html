@@ -1,29 +1,31 @@
 <!doctype html>
 {{ partial "head.html" .}}
   <body>
-
-<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-     <a class="navbar-brand" href="#"><img id="logo" class="d-inline-block mr-1" alt="Logo" src="/img/logo.svg"> <span class="logo-name">PESTILLI <span class="orange-text">LAB</span></span></a>
-     <ul class="nav justify-content-end nav-pills">
-        <li class="nav-item">
-          <a class="nav-link" href="/">HOME</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="#">RESEARCH</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/publications">PUBLICATIONS</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/team">PEOPLE</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-      </ul>
-</nav>
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+      <a class="navbar-brand" href="#"><img id="logo" class="d-inline-block mr-1" alt="Logo" src="{{ .Site.BaseURL }}img/logo.svg"> <span class="logo-name">PESTILLI <span class="orange-text">LAB</span></span></a>
+      <ul class="nav justify-content-end nav-pills">
+         <li class="nav-item">
+           <a class="nav-link" href="{{ .Site.BaseURL }}">HOME</a>
+         </li>
+         <li class="nav-item">
+           <a class="nav-link active" href="{{ .Site.BaseURL }}research">RESEARCH</a>
+         </li>
+         <li class="nav-item">
+           <a class="nav-link" href="{{ .Site.BaseURL }}publications">PUBLICATIONS</a>
+         </li>
+         <li class="nav-item">
+             <a class="nav-link" href="{{ .Site.BaseURL }}team">PEOPLE</a>
+         </li>
+          <li class="nav-item">
+             <a class="nav-link" href="{{ .Site.BaseURL }}environment">Environment</a>
+         </li>
+         <li class="nav-item">
+             <a class="nav-link" href="#">Link</a>
+         </li>
+       </ul>
+  </nav>
 <main role="main">
-    <div class="position-relative overflow-hidden p-3 p-md-5 text-center " style="background-image : url('/img/research.jpg') ;background-position: center; /* Center the image */
+    <div class="position-relative overflow-hidden p-3 p-md-5 text-center " style="background-image : url('{{ .Site.BaseURL }}img/research.jpg') ;background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */">
         <div class="col-md-5 p-lg-5 my-5">
             <div class="rect float-left"> <h1>Research</h1></div>
@@ -52,7 +54,7 @@
           <p class="margin-paragraph-left">Tiramisu gummies chocolate bar pie cake pastry. Sweet muffin sugar plum pastry wafer lemon drops biscuit topping carrot cake. Muffin apple pie candy canes gingerbread halvah halvah. Toffee toffee powder powder candy canes. Wafer danish donut gingerbread carrot cake marshmallow tart. Apple pie jelly beans chocolate cake. Liquorice muffin brownie jujubes gingerbread dragée donut. Marshmallow pudding chupa chups. Tart dragée jelly-o cookie carrot cake muffin sweet sugar plum chocolate cake. Lemon drops marzipan dessert. Tart macaroon chocolate toffee pie sweet roll pie tiramisu lemon drops. Croissant muffin gingerbread. Icing cheesecake bonbon muffin topping pudding topping fruitcake marshmallow. </p>
         </div>
         <div class="col-md-5">
-          <img class="featurette-image img-fluid mx-auto"src="/img/500x500.svg" alt="Generic placeholder image">
+          <img class="featurette-image img-fluid mx-auto"src="{{ .Site.BaseURL }}img/500x500.svg" alt="Generic placeholder image">
         </div>
       </div>
 
@@ -65,7 +67,7 @@
             <p class="margin-paragraph-right">Tiramisu gummies chocolate bar pie cake pastry. Sweet muffin sugar plum pastry wafer lemon drops biscuit topping carrot cake. Muffin apple pie candy canes gingerbread halvah halvah. Toffee toffee powder powder candy canes. Wafer danish donut gingerbread carrot cake marshmallow tart. Apple pie jelly beans chocolate cake. Liquorice muffin brownie jujubes gingerbread dragée donut. Marshmallow pudding chupa chups. Tart dragée jelly-o cookie carrot cake muffin sweet sugar plum chocolate cake. Lemon drops marzipan dessert. Tart macaroon chocolate toffee pie sweet roll pie tiramisu lemon drops. Croissant muffin gingerbread. Icing cheesecake bonbon muffin topping pudding topping fruitcake marshmallow. </p>
            </div>
         <div class="col-md-5 order-md-1">
-          <img class="featurette-image img-fluid mx-auto" src="/img/500x500.svg" alt="Generic placeholder image">
+          <img class="featurette-image img-fluid mx-auto" src="{{ .Site.BaseURL }}img/500x500.svg" alt="Generic placeholder image">
         </div>
       </div>
 
@@ -104,8 +106,8 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="/js/parser.js"></script>
-    <script src='/js/lab.js'> </script>
+    <script src="{{ .Site.BaseURL }}js/parser.js"></script>
+    <script src='{{ .Site.BaseURL }}js/lab.js'> </script>
     <!-- Option 2: jQuery, Popper.js, and Bootstrap JS
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

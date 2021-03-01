@@ -4,19 +4,19 @@
     <a class="navbar-brand" href="#"><img id="logo" class="d-inline-block mr-1" alt="Logo" src="img/logo.svg"> <span class="logo-name">PESTILLI <span class="orange-text">LAB</span></span></a>
     <ul class="nav justify-content-end nav-pills">
        <li class="nav-item">
-         <a class="nav-link active" href="/">HOME</a>
+         <a class="nav-link active" href="{{ .Site.BaseURL }}">HOME</a>
        </li>
        <li class="nav-item">
-         <a class="nav-link" href="/research">RESEARCH</a>
+         <a class="nav-link" href="{{ .Site.BaseURL }}research">RESEARCH</a>
        </li>
        <li class="nav-item">
-         <a class="nav-link" href="/publications">PUBLICATIONS</a>
+         <a class="nav-link" href="{{ .Site.BaseURL }}publications">PUBLICATIONS</a>
        </li>
        <li class="nav-item">
-           <a class="nav-link" href="/team">PEOPLE</a>
+           <a class="nav-link" href="{{ .Site.BaseURL }}team">PEOPLE</a>
        </li>
         <li class="nav-item">
-           <a class="nav-link" href="/environment">Environment</a>
+           <a class="nav-link" href="{{ .Site.BaseURL }}environment">Environment</a>
        </li>
        <li class="nav-item">
            <a class="nav-link" href="#">Link</a>
