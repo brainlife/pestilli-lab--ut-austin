@@ -279,7 +279,7 @@ function generateAlumni(obj){
 function team_generator(){
     console.log("entered");
 
-    fetch('assets/team.json').then(res=>res.json()).then(insts=>{
+    fetch('http://129.114.17.179:8000/plab/assets/team.json').then(res=>res.json()).then(insts=>{
         
         console.log(insts);
         for(let name in insts) {
@@ -386,7 +386,7 @@ function generatePublication(title,date,authors,link,doi,journal) {
     document.getElementById('_publications').innerHTML += content;
 }
 
-axios.get(dataUrl, { data: null }, axios.defaults.headers)
+axios.get('http://129.114.17.179:8000/plab/assets/pub.xml', { data: null }, axios.defaults.headers)
             .then(response => {
                 console.log(response.data)
                 var jsonObj2 = parser.parse(response.data);
@@ -410,20 +410,20 @@ function generateAwards(startDate,endDate,pi,copi,title){
     document.getElementById('_awards').innerHTML += content;
 }
 
-axios.get('assets/nsf.json').then(response =>{
-    // console.log(response.data);
-    console.log(response.data.response.award);
-    var outputs = response.data.response.award;
-    for(i=0; i <= outputs.length;i++){
-        var output = response.data.response.award[i];
-        if(output.coPDPI != undefined){
-            generateAwards(output.startDate,output.expDate,output.piFirstName+' '+output.piLastName,output.coPDPI,output.title);
-    }else{
-        generateAwards(output.startDate,output.expDate,output.piFirstName+' '+output.piLastName,"",output.title);
+// axios.get('assets/nsf.json').then(response =>{
+//     // console.log(response.data);
+//     console.log(response.data.response.award);
+//     var outputs = response.data.response.award;
+//     for(i=0; i <= outputs.length;i++){
+//         var output = response.data.response.award[i];
+//         if(output.coPDPI != undefined){
+//             generateAwards(output.startDate,output.expDate,output.piFirstName+' '+output.piLastName,output.coPDPI,output.title);
+//     }else{
+//         generateAwards(output.startDate,output.expDate,output.piFirstName+' '+output.piLastName,"",output.title);
 
-    }
-    }
-});
+//     }
+//     }
+// });
 
 
 axios.get(CORS_PROXY+'https://api.federalreporter.nih.gov/v1/Projects/search?query=piName%3AFRANCO%20PESTILLI&offset=1&limit=100').then(response =>{
@@ -441,3 +441,41 @@ axios.get(CORS_PROXY+'https://api.federalreporter.nih.gov/v1/Projects/search?que
     }
     }
 });
+
+$(document).ready(function(){
+
+    //   $("li").sort(function(a,b){
+    //     return new Date($(a).attr("data-event-date")) < new Date($(b).attr("data-event-date"));
+    // }).each(function(){
+    //     $("ul").prepend(this);
+    // })
+    
+    var container = $(".timeline");
+        var items = $(".timeline-item");
+        
+        items.each(function() {
+           // Convert the string in 'data-event-date' attribute to a more
+           // standardized date format
+           console.log("here2");
+          //  var BCDate = $(this).attr("data-event-date");
+          var BCDate = $(this).find('.date_check').text();
+          var obj = $(this).find('.h5').text();
+           console.log('BC DATE '+BCDate +'for'+obj);
+           standardDate = new Date(BCDate).getTime();
+           console.log("final standard date:"+standardDate);
+           $(this).attr("data-event-date", standardDate);
+     
+        });
+        
+    
+        items.sort(function(a,b){
+            a = parseFloat($(a).attr("data-event-date"));
+            b = parseFloat($(b).attr("data-event-date"));
+            return a>b ? -1 : a<b ? 1 : 0;
+        }).each(function(){
+          console.log("order"+this);
+            container.append(this);
+        });
+        
+    });
+    
